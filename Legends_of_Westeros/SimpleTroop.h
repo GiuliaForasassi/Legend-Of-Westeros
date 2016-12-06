@@ -11,7 +11,7 @@ class SimpleTroop : public Map {
 public:
    // virtual ~SimpleTroop() {}
 
-    virtual int getStrenght() = 0;
+    virtual float getStrenght() = 0;
 
 };
 

@@ -4,12 +4,11 @@
 
 #include "Soldier.h"
 
-Soldier::Soldier() : attack(1), defense(2) {}
+Soldier::Soldier() : attack(1), defense(2) {
+    strenght = ((attack + defense)/2);
+}
 
-int Soldier::getStrenght(int a, int d) {
-    attack = a;
-    defense = d;
-    strenght = ((a + d)/2);
-    return 0;
+float Soldier::getStrenght() {
+        return strenght;
 }
 

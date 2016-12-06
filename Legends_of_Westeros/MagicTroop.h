@@ -8,9 +8,10 @@
 #include "Map.h"
 
 class MagicTroop : public Map{
+public:
    // virtual ~MagicTroop() {}
 
-    virtual int getMagic() = 0;
+    virtual float getMagic() = 0;
 
 
 };

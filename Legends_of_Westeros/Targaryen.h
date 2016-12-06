@@ -14,8 +14,9 @@
 class Targaryen : public ArmyFactory {
 public:
     Targaryen();
-    int getPower(int s, int numS, int numD);
-
+    Targaryen(int nd,int ns);
+    //int getPower(int s, int numS, int numD, int a, int d) override ;
+    float getPower();
 
 
     //int getDefense() const {
@@ -24,12 +25,12 @@ public:
 
 
 private:
-    int power;
+    float power;
     //int defense;
     int numDragons;
     int numSoldiers;
-    SimpleTroop *strenghtS;
-
+    SimpleTroop* strenghtS;
+    MagicTroop* magicD;
 };
 
 

@@ -10,11 +10,11 @@
 class Soldier : public SimpleTroop{
 public:
     Soldier();
-    int getStrenght(int a, int d);
+    float getStrenght () override;
 private:
-    int defense;
-    int attack;
-    int strenght;
+    float defense;
+    float attack;
+    float strenght;
 
 
 

@@ -10,7 +10,7 @@ class ArmyFactory {
 public:
     //virtual ~ArmyFactory() {}
 
-    virtual int getPower() = 0;
+    virtual float getPower() = 0;
   // virtual getDefense() = 0;
 
 };
