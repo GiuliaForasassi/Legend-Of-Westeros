@@ -7,8 +7,9 @@
 
 #include "SimpleTroop.h"
 #include "MagicTroop.h"
+#include "Army.h"
 
-class Stark {
+class Stark : public Army {
 public:
     Stark();
     Stark(int nw,int ns);

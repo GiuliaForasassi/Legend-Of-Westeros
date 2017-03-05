@@ -2,7 +2,7 @@
 
 using namespace std;
 
-#include "ArmyFactory.h"
+#include "Army.h"
 #include "Targaryen.h"
 #include "SimpleTroop.h"
 #include "MagicTroop.h"
@@ -11,6 +11,13 @@ using namespace std;
 #include "Map.h"
 #include "Stark.h"
 #include "Wizard.h"
+#include "Lannister.h"
+#include "Archer.h"
+#include "Baratheon.h"
+#include "RedWizard.h"
+#include "Knight.h"
+#include "Greyjoy.h"
+#include "WhiteWalkers.h"
 
 int main() {
     Soldier s;
@@ -29,5 +36,27 @@ int main() {
     std::cout << "La potenza degli Stark è:" << std::endl;
     std::cout << ris1 << std::endl;
 
+    Lannister *l = new Lannister(4, 35);
+    float ris2 = 0;
+    ris2 = l->getPower();
+    std::cout << "La potenza dei Lannister è:" << std::endl;
+    std::cout << ris2 << std::endl;
 
+    Baratheon *b = new Baratheon(8, 7);
+    float ris3 = 0;
+    ris3 = b->getPower();
+    std::cout << "La potenza dei Baratheon è:" << std::endl;
+    std::cout << ris3 << std::endl;
+
+    Greyjoy *g = new Greyjoy(3, 32);
+    float ris4 = 0;
+    ris4 = g->getPower();
+    std::cout << "La potenza dei Greyjoy è:" << std::endl;
+    std::cout << ris4 << std::endl;
+
+    WhiteWalkers *w = new WhiteWalkers(20, 5);
+    float ris5 = 0;
+    ris5 = w->getPower();
+    std::cout << "La potenza dei WhiteWalkers è:" << std::endl;
+    std::cout << ris5 << std::endl;
 }

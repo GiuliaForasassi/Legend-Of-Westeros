@@ -5,13 +5,13 @@
 #ifndef LEGENDS_OF_WESTEROS_TARGARYEN_H
 #define LEGENDS_OF_WESTEROS_TARGARYEN_H
 
-#include "ArmyFactory.h"
+#include "Army.h"
 #include "Soldier.h"
 #include "Dragon.h"
 #include "SimpleTroop.h"
 #include "MagicTroop.h"
 
-class Targaryen : public ArmyFactory {
+class Targaryen : public Army {
 public:
     Targaryen();
     Targaryen(int nd,int ns);
