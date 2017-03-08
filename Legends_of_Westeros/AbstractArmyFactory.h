@@ -10,9 +10,12 @@
 #include "MagicTroop.h"
 #include "Lannister.h"
 
+enum class house {Lannister, Stark, Greyjoy, Targaryen, WhiteWalkers, Baratheon};
+
 class AbstractArmyFactory {
 public:
-    virtual Army* createArmy(int i, int type1, int type2) = 0;
+    virtual Army* createArmy(int typeSimple, int typeMagic) = 0;
+
 };
 
 

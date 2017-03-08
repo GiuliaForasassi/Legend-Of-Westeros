@@ -31,6 +31,7 @@ private:
     int numSoldiers;
     SimpleTroop* strenghtS;
     MagicTroop* magicD;
+
 };
 
 

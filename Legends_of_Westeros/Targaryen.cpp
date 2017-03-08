@@ -9,6 +9,7 @@ using namespace std;
 #include "Soldier.h"
 #include "Dragon.h"
 
+
 Targaryen::Targaryen() : numDragons(5), numSoldiers(30) {
     strenghtS = new Soldier();
     magicD = new Dragon();

@@ -5,9 +5,8 @@
 #ifndef LEGENDS_OF_WESTEROS_SIMPLETROOP_H
 #define LEGENDS_OF_WESTEROS_SIMPLETROOP_H
 
-#include "Map.h"
 
-class SimpleTroop : public Map {
+class SimpleTroop{
 public:
    // virtual ~SimpleTroop() {}
 

@@ -9,7 +9,11 @@
 #include "Lannister.h"
 
 class ConcreteArmyFactory : public AbstractArmyFactory {
-    Army* createArmy(int i, int type1, int type2) override ;
+    ConcreteArmyFactory(house namehouse) : namehouse(namehouse){}
+    Army* createArmy(int typeSimple, int typeMagic) override ;
+
+private:
+    house namehouse;
 };
 
 

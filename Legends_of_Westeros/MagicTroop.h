@@ -5,14 +5,11 @@
 #ifndef LEGENDS_OF_WESTEROS_MAGICTROOP_H
 #define LEGENDS_OF_WESTEROS_MAGICTROOP_H
 
-#include "Map.h"
 
-class MagicTroop : public Map{
+class MagicTroop {
 public:
-   // virtual ~MagicTroop() {}
 
     virtual float getMagic() = 0;
-
 
 };
 
