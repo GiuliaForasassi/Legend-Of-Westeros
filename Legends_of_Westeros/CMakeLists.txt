@@ -10,7 +10,7 @@ set(SOURCE_FILES main.cpp Map.cpp Map.h Army.cpp Army.h Targaryen.cpp Targaryen.
         Stark.cpp Stark.h Wizard.cpp Wizard.h Lannister.cpp Lannister.h Archer.cpp Archer.h Baratheon.cpp
         Baratheon.h RedWizard.cpp RedWizard.h Knight.cpp Knight.h Greyjoy.cpp Greyjoy.h WhiteWalkers.cpp
         WhiteWalkers.h Zombie.cpp Zombie.h AbstractArmyFactory.cpp AbstractArmyFactory.h ConcreteArmyFactory.cpp
-        ConcreteArmyFactory.h GameCharacter.h GameCharacter.cpp)
+        ConcreteArmyFactory.h)
 add_executable(Legends_of_Westeros ${SOURCE_FILES})
 
 add_library(core ${SOURCE_FILES})

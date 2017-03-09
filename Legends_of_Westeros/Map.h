@@ -13,6 +13,7 @@ class Map {
 
 public:
     Map();
+
     Map(int r, int c);
 
     int ReadMap(int r, int c);

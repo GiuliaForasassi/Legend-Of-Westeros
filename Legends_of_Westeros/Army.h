@@ -8,7 +8,7 @@
 
 class Army {
 public:
-    //virtual ~Army() {}
+    virtual ~Army() {}
 
     virtual float getPower() = 0;
   // virtual getDefense() = 0;
