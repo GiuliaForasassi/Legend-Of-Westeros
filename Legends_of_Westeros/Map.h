@@ -6,6 +6,8 @@
 #define LEGENDS_OF_WESTEROS_MAP_H
 
 
+#include "Territory.h"
+
 typedef double typeElem;
 
 
@@ -14,26 +16,31 @@ class Map {
 public:
     Map();
 
-    Map(int r, int c);
+    //Map(int r, int c);
 
-    int ReadMap(int r, int c);
+    void show();
 
-    void WriteMap(int r, int c, int val);
+    Territory readTerritory(int r, int c);
+
+    void writeTerritory(int r, int c, Territory val);
 
     int getRow() const {
-        return row;
+        return rows;
     }
 
     int getColumn() const {
-        return column;
+        return columns;
     }
+
+    bool conquer(int invaderRow, int invaderColumn, int defenderRow, int defenderColumn);
 
 
 private:
-    int row;
-    int column;
-    int matrix[3][3];
+    int rows;
+    int columns;
+    Territory matrix[4][8];
 
+    float calculateStrength(int initialRow, int initialColumn);
 
 };
 

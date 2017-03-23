@@ -15,22 +15,10 @@ class Targaryen : public Army {
 public:
     Targaryen();
     Targaryen(int nd,int ns);
-    //int getPower(int s, int numS, int numD, int a, int d) override ;
-    float getPower();
+    string getName() override;
+    Strategy getStrategy() override;
 
-
-    //int getDefense() const {
-    //    return defense;
-    //}
-
-
-private:
-    float power;
-    //int defense;
-    int numDragons;
-    int numSoldiers;
-    SimpleTroop* strenghtS;
-    MagicTroop* magicD;
+    static Strategy strategy;
 
 };
 

@@ -13,14 +13,11 @@ class Baratheon : public Army {
 public:
     Baratheon();
     Baratheon(int nrw,int nk);
-    float getPower();
+    string getName() override;
+    Strategy getStrategy() override;
 
-private:
-    float power;
-    int numRedWizards;
-    int numKnights;
-    SimpleTroop* strenghtS;
-    MagicTroop* magicD;
+    static Strategy strategy; //estendo la classe army dove c'è la strategy, è static perchè più armate della
+                              //stessa casata hanno la stessa strategia
 
 };
 

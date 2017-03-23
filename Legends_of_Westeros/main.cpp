@@ -1,4 +1,5 @@
 #include <iostream>
+#include <time.h>
 
 using namespace std;
 
@@ -20,16 +21,43 @@ using namespace std;
 #include "WhiteWalkers.h"
 #include "Map.h"
 
+ostream& operator<<(ostream &o, Strategy s)
+{
+    switch(s)
+    {
+        case Strategy::onlyMagic:
+            return o << "onlyMagic";
+        case Strategy::onlySimple:
+            return o << "onlySimple";
+        case Strategy::lessDefense:
+            return o << "lessDefense";
+        default:
+            return o << "valore non valido";
+    }
+}
+
 int main() {
+
+    srand(time(NULL)); //da chiamare una volta quando tirerò a caso i numeri con la rand
+
     //Soldier* s;
     //Targaryen *t=new Targaryen();
     //t->getPower(1,2,3,4,5);
 
-    Map *m = new Map(3,3);
-    m->WriteMap(0,0,5);
-    int cc = 10;
-            cc= m->ReadMap(0,0);
-    std::cout << cc << std::endl;
+    Baratheon::strategy = Army::randomStrategy();
+    Greyjoy::strategy = Army::randomStrategy();
+    Lannister::strategy = Army::randomStrategy();
+    Stark::strategy = Army::randomStrategy();
+    Targaryen::strategy = Army::randomStrategy();
+    WhiteWalkers::strategy = Army::randomStrategy();
+
+
+    Map *m = new Map();
+    m->writeTerritory(0, 0, Territory(false));
+    m->show();
+
+
+    m->conquer();
 
     Targaryen *t = new Targaryen(5, 30);
     float ris = 0;
@@ -66,4 +94,23 @@ int main() {
     ris5 = w->getPower();
     std::cout << "La potenza dei WhiteWalkers è:" << std::endl;
     std::cout << ris5 << std::endl;
+
+    //obiettivo: poter richiamare getStrategy da un puntatore ad Army
+
+    Army *a1, *a2, *a3, *a4, *a5,*a6;
+
+    a1 = b;
+    a2 = g;
+    a3 = l;
+    a4 = st;
+    a5 = t;
+    a6 = w;
+
+    cout << a1->getStrategy() << endl;
+    cout << a2->getStrategy() << endl;
+    cout << a3->getStrategy() << endl;
+    cout << a4->getStrategy() << endl;
+    cout << a5->getStrategy() << endl;
+    cout << a6->getStrategy() << endl;
+
 }

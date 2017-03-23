@@ -9,24 +9,23 @@ using namespace std;
 #include "Soldier.h"
 #include "Dragon.h"
 
+Strategy Targaryen::strategy = Strategy::onlySimple;
 
-Targaryen::Targaryen() : numDragons(5), numSoldiers(30) {
-    strenghtS = new Soldier();
-    magicD = new Dragon();
+Targaryen::Targaryen() : Army(5, 30) {
+    simpleTroop = new Soldier();
+    magicTroop = new Dragon();
 }
 
-Targaryen::Targaryen(int nd, int ns) {
-    strenghtS = new Soldier();
-    magicD = new Dragon();
-    numSoldiers = ns;
-    numDragons = nd;
-    power = strenghtS->getStrenght() * ns + (magicD->getMagic() * nd);
+Targaryen::Targaryen(int nd, int ns) : Army(nd, ns) {
+    simpleTroop = new Soldier();
+    magicTroop = new Dragon();
 }
 
-float Targaryen::getPower() {
-    //numSoldiers = numS;
-    //numDragons = numD;
-    //power = strenghtS->getStrenght(a, d) * numS + magicD->getMagic(a, d) * numD;
-    return power;
+string Targaryen::getName() {
+    return "Targaryen";
+}
 
+Strategy Targaryen::getStrategy()
+{
+    return Targaryen::strategy;
 }

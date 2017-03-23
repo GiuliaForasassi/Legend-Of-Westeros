@@ -13,5 +13,12 @@ set(SOURCE_FILES main.cpp Map.cpp Map.h Army.cpp Army.h Targaryen.cpp Targaryen.
         ConcreteArmyFactory.h)
 add_executable(Legends_of_Westeros ${SOURCE_FILES})
 
-add_library(core ${SOURCE_FILES})
+set(CMAKE_MODULE_PATH "${CMAKE_SOURCE_DIR}/cmake_modules" ${CMAKE_MODULE_PATH})
+find_package(SFML REQUIRED system window graphics network audio)
+if (SFML_FOUND)
+    include_directories(${SFML_INCLUDE_DIR})
+    target_link_libraries(Legends_of_Westeros ${SFML_LIBRARIES})
+endif()
+
+add_library(core ${SOURCE_FILES} Territory.cpp Territory.h)
 target_link_libraries(Legends_of_Westeros core)

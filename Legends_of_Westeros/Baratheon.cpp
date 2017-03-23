@@ -6,19 +6,23 @@
 #include "RedWizard.h"
 #include "Knight.h"
 
-Baratheon::Baratheon() : numRedWizards(8), numKnights(7) {
-    strenghtS = new Knight();
-    magicD = new RedWizard();
+Strategy Baratheon::strategy = Strategy::onlySimple;
+
+Baratheon::Baratheon() : Army(8, 7) {
+    simpleTroop = new Knight();
+    magicTroop = new RedWizard();
 }
 
-Baratheon::Baratheon(int nrw, int nk) {
-    strenghtS = new Knight();
-    magicD = new RedWizard();
-    numKnights = nk;
-    numRedWizards = nrw;
-    power = strenghtS->getStrenght() * nk + (magicD->getMagic() * nrw);
+Baratheon::Baratheon(int nrw, int nk) : Army(nrw, nk) {
+    simpleTroop = new Knight();
+    magicTroop = new RedWizard();
 }
 
-float Baratheon::getPower() {
-    return power;
+string Baratheon::getName() {
+    return "Baratheon";
+}
+
+Strategy Baratheon::getStrategy()
+{
+    return Baratheon::strategy;
 }

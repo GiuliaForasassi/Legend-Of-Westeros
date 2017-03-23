@@ -14,16 +14,10 @@ class Greyjoy : public Army {
 public:
     Greyjoy();
     Greyjoy(int nw,int na);
-    float getPower();
+    string getName() override;
+    Strategy getStrategy() override;
 
-private:
-    float power;
-    int numWizards;
-    int numArchers;
-    SimpleTroop* strenghtS;
-    MagicTroop* magicD;
-
-
+    static Strategy strategy;
 
 };
 

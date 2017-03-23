@@ -14,14 +14,10 @@ class Lannister : public Army{
 public:
     Lannister();
     Lannister(int nd,int na);
-    float getPower();
+    string getName() override;
+    Strategy getStrategy() override;
 
-private:
-    float power;
-    int numDragons;
-    int numArchers;
-    SimpleTroop* strenghtS;
-    MagicTroop* magicD;
+    static Strategy strategy;
 
 };
 

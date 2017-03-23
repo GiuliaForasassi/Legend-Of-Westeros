@@ -6,19 +6,23 @@
 #include "Knight.h"
 #include "Zombie.h"
 
-WhiteWalkers::WhiteWalkers() : numZombies(20), numKnights(5) {
-    strenghtS = new Knight();
-    magicD = new Zombie();
+Strategy WhiteWalkers::strategy = Strategy::onlySimple;
+
+WhiteWalkers::WhiteWalkers() : Army(20, 5){
+    simpleTroop = new Knight();
+    magicTroop = new Zombie();
 }
 
-WhiteWalkers::WhiteWalkers(int nz, int nk) {
-    strenghtS = new Knight();
-    magicD = new Zombie();
-    numKnights = nk;
-    numZombies = nz;
-    power = strenghtS->getStrenght() * nk + (magicD->getMagic() * nz);
+WhiteWalkers::WhiteWalkers(int nz, int nk) : Army(nz, nk) {
+    simpleTroop = new Knight();
+    magicTroop = new Zombie();
 }
 
-float WhiteWalkers::getPower() {
-    return power;
+string WhiteWalkers::getName() {
+    return "WhiteWalkers";
+}
+
+Strategy WhiteWalkers::getStrategy()
+{
+    return WhiteWalkers::strategy;
 }

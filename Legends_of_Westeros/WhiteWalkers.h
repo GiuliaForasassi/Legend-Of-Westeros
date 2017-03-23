@@ -14,14 +14,10 @@ class WhiteWalkers : public Army{
 public:
     WhiteWalkers();
     WhiteWalkers(int nz,int nk);
-    float getPower();
+    string getName() override;
+    Strategy getStrategy() override;
 
-private:
-    float power;
-    int numZombies;
-    int numKnights;
-    SimpleTroop* strenghtS;
-    MagicTroop* magicD;
+    static Strategy strategy;
 
 };
 

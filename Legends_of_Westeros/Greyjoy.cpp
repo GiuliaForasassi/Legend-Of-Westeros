@@ -6,19 +6,23 @@
 #include "Archer.h"
 #include "Wizard.h"
 
-Greyjoy::Greyjoy() : numWizards(3), numArchers(32) {
-    strenghtS = new Archer();
-    magicD = new Wizard();
+Strategy Greyjoy::strategy = Strategy::onlySimple;
+Greyjoy::Greyjoy() : Army(3, 32) {
+    simpleTroop = new Archer();
+    magicTroop = new Wizard();
 }
 
-Greyjoy::Greyjoy(int nw, int na) {
-    strenghtS = new Archer();
-    magicD = new Wizard();
-    numArchers = na;
-    numWizards = nw;
-    power = strenghtS->getStrenght() * na + (magicD->getMagic() * nw);
+Greyjoy::Greyjoy(int nw, int na) : Army(nw, na) {
+    simpleTroop = new Archer();
+    magicTroop = new Wizard();
 }
 
-float Greyjoy::getPower() {
-    return power;
+
+string Greyjoy::getName() {
+    return "Greyjoy";
+}
+
+Strategy Greyjoy::getStrategy()
+{
+    return Greyjoy::strategy;
 }

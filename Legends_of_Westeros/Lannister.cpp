@@ -6,19 +6,23 @@
 #include "Dragon.h"
 #include "Archer.h"
 
-Lannister::Lannister() : numDragons(4), numArchers(35) {
-    strenghtS = new Archer();
-    magicD = new Dragon();
+Strategy Lannister::strategy = Strategy::onlySimple;
+
+Lannister::Lannister() : Army(4, 35) {
+    simpleTroop = new Archer();
+    magicTroop = new Dragon();
 }
 
-Lannister::Lannister(int nd, int na) {
-    strenghtS = new Archer();
-    magicD = new Dragon();
-    numArchers = na;
-    numDragons = nd;
-    power = strenghtS->getStrenght() * na + (magicD->getMagic() * nd);
+Lannister::Lannister(int nd, int na) : Army(nd, na) {
+    simpleTroop = new Archer();
+    magicTroop = new Dragon();
 }
 
-float Lannister::getPower() {
-    return power;
+string Lannister::getName() {
+    return "Lannister";
+}
+
+Strategy Lannister::getStrategy()
+{
+    return Lannister::strategy;
 }

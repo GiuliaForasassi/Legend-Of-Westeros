@@ -13,15 +13,10 @@ class Stark : public Army {
 public:
     Stark();
     Stark(int nw,int ns);
-    //int getPower(int s, int numS, int numD, int a, int d) override ;
-    float getPower();
+    string getName() override;
+    Strategy getStrategy() override;
 
-private:
-    float power;
-    int numWizards;
-    int numSoldiers;
-    SimpleTroop* strenghtS;
-    MagicTroop* magicD;
+    static Strategy strategy;
 
 };
 

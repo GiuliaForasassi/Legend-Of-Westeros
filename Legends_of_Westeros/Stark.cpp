@@ -6,20 +6,23 @@
 #include "Soldier.h"
 #include "Wizard.h"
 
+Strategy Stark::strategy = Strategy::onlySimple;
 
-Stark::Stark() : numWizards(10), numSoldiers(25) {
-    strenghtS = new Soldier();
-    magicD = new Wizard();
+Stark::Stark() : Army(10, 25){
+    simpleTroop = new Soldier();
+    magicTroop = new Wizard();
 }
 
-Stark::Stark(int nw, int ns) {
-    strenghtS = new Soldier();
-    magicD = new Wizard();
-    numSoldiers = ns;
-    numWizards = nw;
-    power = strenghtS->getStrenght() * ns + (magicD->getMagic() * nw);
+Stark::Stark(int nw, int ns) : Army(nw, ns) {
+    simpleTroop = new Soldier();
+    magicTroop = new Wizard();
+    }
+
+string Stark::getName() {
+    return "Stark";
 }
 
-float Stark::getPower() {
-    return power;
+Strategy Stark::getStrategy()
+{
+    return Stark::strategy;
 }
