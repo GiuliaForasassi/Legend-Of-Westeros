@@ -94,7 +94,10 @@ void Map::show() {
 bool Map::conquer(int invaderRow, int invaderColumn, int defenderRow, int defenderColumn) {
 
     // controlli su indici
-    // ...
+    if (!(invaderColumn < columns && invaderColumn >= 0 && invaderRow < rows && invaderRow >= 0))
+        return false;
+    if (!(invaderColumn < columns && invaderColumn >= 0 && defenderRow < rows && defenderRow >= 0))
+        return false;
 
     // assegno variabili
     Army *invader, *defender;
