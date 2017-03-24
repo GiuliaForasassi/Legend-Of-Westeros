@@ -10,13 +10,6 @@
 class Dragon : public MagicTroop {
 public:
     Dragon();
-    float getMagic() override;
-
-private:
-    float attack;
-    float defense;
-    float magic;
-
 };
 
 

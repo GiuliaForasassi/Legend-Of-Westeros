@@ -4,10 +4,6 @@
 
 #include "Zombie.h"
 
-Zombie::Zombie() : attack(1), defense(6) {
+Zombie::Zombie() : MagicTroop(1, 6) {
     magic = ((attack + defense)/2);
-}
-
-float Zombie::getMagic() {
-    return magic;
 }

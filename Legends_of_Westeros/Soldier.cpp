@@ -4,11 +4,7 @@
 
 #include "Soldier.h"
 
-Soldier::Soldier() : attack(1), defense(2) {
+Soldier::Soldier() : SimpleTroop(1, 2) {
     strenght = ((attack + defense)/2);
-}
-
-float Soldier::getStrenght() {
-        return strenght;
 }
 

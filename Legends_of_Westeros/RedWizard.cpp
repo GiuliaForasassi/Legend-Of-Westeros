@@ -4,10 +4,6 @@
 
 #include "RedWizard.h"
 
-RedWizard::RedWizard() : attack(8), defense(3) {
+RedWizard::RedWizard() : MagicTroop(8, 3) {
     magic = ((attack + defense)/2);
-}
-
-float RedWizard::getMagic() {
-    return magic;
 }

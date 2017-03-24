@@ -8,10 +8,16 @@
 
 class SimpleTroop{
 public:
-   // virtual ~SimpleTroop() {}
+    SimpleTroop(float defense, float attack) : defense(defense), attack(attack) { }
 
-    virtual float getStrenght() = 0;
+    virtual ~SimpleTroop() {}
 
+    virtual float getStrenght();
+
+protected:
+    float defense;
+    float attack;
+    float strenght;
 };
 
 

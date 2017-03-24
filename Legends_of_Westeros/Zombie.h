@@ -11,13 +11,6 @@
 class Zombie : public MagicTroop {
 public:
     Zombie();
-    float getMagic() override;
-
-private:
-    float attack;
-    float defense;
-    float magic;
-
 };
 
 

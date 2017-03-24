@@ -10,12 +10,6 @@
 class Archer : public SimpleTroop {
 public:
     Archer();
-    float getStrenght () override;
-private:
-    float defense;
-    float attack;
-    float strenght;
-
 };
 
 

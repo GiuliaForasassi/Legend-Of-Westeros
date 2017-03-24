@@ -17,12 +17,16 @@ enum class Strategy {onlyMagic, onlySimple, lessDefense};
 class Army {
 public:
     Army(int m, int s) : numMagic(m), numSimple(s){}
-    virtual ~Army() {}
+    virtual ~Army();
 
     virtual string getName() = 0;
     virtual float getPower();
     virtual float getSimplePower();
     virtual float getMagicPower();
+    virtual int getNumSimpleTroops();
+    virtual int getNumMagicTroops();
+    virtual void setNumSimpleTroops(int);
+    virtual void setNumMagTroops(int);
 
     virtual Strategy getStrategy() = 0; //non serve una classe astratta strategy, basta sfruttare questa classe
 

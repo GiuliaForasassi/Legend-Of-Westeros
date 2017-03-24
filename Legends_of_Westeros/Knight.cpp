@@ -4,11 +4,7 @@
 
 #include "Knight.h"
 
-Knight::Knight() : attack(4), defense(3) {
+Knight::Knight() : SimpleTroop(4, 3) {
     strenght = ((attack + defense)/2);
-}
-
-float Knight::getStrenght() {
-    return strenght;
 }
 

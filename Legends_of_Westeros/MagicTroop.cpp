@@ -3,3 +3,7 @@
 //
 
 #include "MagicTroop.h"
+
+float MagicTroop::getMagic() {
+    return magic;
+}

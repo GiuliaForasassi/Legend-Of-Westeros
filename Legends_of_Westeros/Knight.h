@@ -11,12 +11,6 @@
 class Knight : public SimpleTroop {
 public:
     Knight();
-    float getStrenght () override;
-private:
-    float defense;
-    float attack;
-    float strenght;
-
 };
 
 

@@ -4,10 +4,6 @@
 
 #include "Dragon.h"
 
-Dragon::Dragon() : attack(10), defense(8) {
+Dragon::Dragon() : MagicTroop(10, 8) {
     magic = ((attack + defense)/2);
-}
-
-float Dragon::getMagic() {
-    return magic;
 }

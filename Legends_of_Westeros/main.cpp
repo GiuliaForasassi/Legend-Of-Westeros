@@ -57,7 +57,7 @@ int main() {
     m->show();
 
 
-    m->conquer();
+//    m->conquer();
 
     Targaryen *t = new Targaryen(5, 30);
     float ris = 0;

@@ -16,17 +16,16 @@ using namespace std;
 Map::Map() : rows(4), columns(8) {
     matrix[rows][columns];
 
-    int tempMat [4][8] = {{0, 0, 3, 0, 5, 1, 2, 2},
-                          {0, 2, 4, 0, 1, 5, 2, 2},
-                          {0, 3, 3, 4, 1, 6, 5, 2},
-                          {0, 0, 0, 5, 1, 1, 2, 2}
+    int tempMat[4][8] = {{0, 0, 3, 0, 5, 1, 2, 2},
+                         {0, 2, 4, 0, 1, 5, 2, 2},
+                         {0, 3, 3, 4, 1, 6, 5, 2},
+                         {0, 0, 0, 5, 1, 1, 2, 2}
     };
 
     int i;
-    for (i = 0; i < rows; i++){
-        for (int j=0; j < columns; j++){
-            switch(tempMat[i][j])
-            {
+    for (i = 0; i < rows; i++) {
+        for (int j = 0; j < columns; j++) {
+            switch (tempMat[i][j]) {
                 case 0:
                     matrix[i][j] = Territory(false);
                     break;
@@ -54,38 +53,32 @@ Map::Map() : rows(4), columns(8) {
     }
 }
 
-/*Map::Map(int r, int c) {
-    rows = r;
-    columns = c;
-
-}*/
 Territory Map::readTerritory(int r, int c) {
-        //try{
-            if(r >= 0 && r < rows && c >= 0 && c < columns)
-                return matrix[r][c];
-            else
-                throw "Indici errati.";
-        //}catch
+    //try{
+    if (r >= 0 && r < rows && c >= 0 && c < columns)
+        return matrix[r][c];
+    else
+        throw "Indici errati.";
+    //}catch
 
-    }
+}
 
-void Map::writeTerritory(int r, int c, Territory val){
+void Map::writeTerritory(int r, int c, Territory val) {
     //try  {
-        if(r >= 0 && r < rows && c >= 0 && c < columns)
-            matrix[r][c] = val;
-        else
-            throw "Indici errati.";
+    if (r >= 0 && r < rows && c >= 0 && c < columns)
+        matrix[r][c] = val;
+    else
+        throw "Indici errati.";
     //}
 
 }
 
 void Map::show() {
-    for(int i = 0; i < rows; i++){
-        for(int j = 0; j < columns; j++){
-            if(matrix[i][j].isEarth())    //terra
+    for (int i = 0; i < rows; i++) {
+        for (int j = 0; j < columns; j++) {
+            if (matrix[i][j].isEarth())    //terra
             {
                 cout << matrix[i][j].getArmy()->getName()[0];
-                //cout <<"T";
             }
             else  //acqua
             {
@@ -112,45 +105,96 @@ bool Map::conquer(int invaderRow, int invaderColumn, int defenderRow, int defend
     // ...
 
     // calcolo le forze tenendo conto delle varie strategy
-    float invaderStrength, defenderStrength;
+    int invaderStrength, defenderStrength;
     // calcolo forza invader
     invaderStrength = calculateStrength(invaderRow, invaderColumn);
+
     // calcolo forza defender
     defenderStrength = calculateStrength(defenderRow, defenderColumn);
 
     // decido il vincitore
+    int result = rand() % (invaderStrength + defenderStrength);
+    int numSimTroops;
+    int numMagTroops;
+    if (result < invaderStrength) {
+        //vince invader
+        numSimTroops = defender->getNumSimpleTroops() * 70 / 100;
+        numMagTroops = defender->getNumMagicTroops() * 70 / 100;
 
-    // aumento/diminuisco le truppe e eventualmente conquisto il territorio
+        if ((numMagTroops + numSimTroops) <= 2) {
+            //è sconfitto, si riassegna il territorio
+
+        }
+        else
+        {
+            //colpito ma non affondato
+            defender->setNumSimpleTroops(numSimTroops);
+            defender->setNumMagTroops(numMagTroops);
+        }
+    }
+    else {
+        //vince defender
+        numSimTroops = invader->getNumSimpleTroops() * 70 / 100;
+        numMagTroops = invader->getNumMagicTroops() * 70 / 100;
+
+    }
 
     return false;
 }
 
 float Map::calculateStrength(int initialRow, int initialColumn) {
     // crea e inizializza una matrice temporanea per vedere se ho già contato un territorio
-    bool calculatedMat[rows][columns];
-    for(int i = 0; i < rows; i++)
-        for(int j = 0; j < columns; j++)
+    //bool calculatedMat[rows][columns];
+    vector<vector<bool>> calculatedMat;
+    for (int i = 0; i < rows; i++)
+        for (int j = 0; j < columns; j++)
             calculatedMat[i][j] = 0;
 
     return calculateStrengthRecursive(initialRow, initialColumn, calculatedMat);
 }
 
 
-float Map::calculateStrengthRecursive(int row, int col, bool **calculatedMat) {
-
-    Army army = matrix[row][col].getArmy();
+float Map::calculateStrengthRecursive(int row, int col, vector<vector<bool>> calculatedMat) {
+    if (!(col < columns && col >= 0 && row < rows && row >= 0))
+        return 0;
+    if (calculatedMat[row][col] == 1)
+        return 0;
+//voleva un puntatore a matrice ma errore quindi vettore di vettori di bool
+    Army *army = matrix[row][col].getArmy();
 
     // tra qui e...
-    int power = army.getPower();
+    int power = army->getPower();
+    calculatedMat[row][col] = 1;
+
+
     // ... qui, dovrò differenziare la strategy
 
-    if(matrix[row][col+1].getArmy()->getName() == army.getName())
-        calculateStrengthRecursive(row, col+1, calculatedMat);
-    if(matrix[row+1][col+1].getArmy()->getName() == army.getName())
-        calculateStrengthRecursive(row+1, col+1, calculatedMat);
-    if(matrix[row+1][col].getArmy()->getName() == army.getName())
-        calculateStrengthRecursive(row+1, col, calculatedMat);
+    if (matrix[row - 1][col + 1].getArmy()->getName() == army->getName())
+        power += calculateStrengthRecursive(row - 1, col + 1, calculatedMat);
+
+    if (matrix[row][col + 1].getArmy()->getName() == army->getName())
+        power += calculateStrengthRecursive(row, col + 1, calculatedMat);
+
+    if (matrix[row + 1][col + 1].getArmy()->getName() == army->getName())
+        power += calculateStrengthRecursive(row + 1, col + 1, calculatedMat);
 
 
-    return calculateStrengthRecursive(row, col, calculatedMat);
+    if (matrix[row + 1][col].getArmy()->getName() == army->getName())
+        power += calculateStrengthRecursive(row + 1, col, calculatedMat);
+
+    if (matrix[row + 1][col - 1].getArmy()->getName() == army->getName())
+        power += calculateStrengthRecursive(row + 1, col - 1, calculatedMat);
+
+    if (matrix[row][col - 1].getArmy()->getName() == army->getName())
+        power += calculateStrengthRecursive(row, col - 1, calculatedMat);
+
+    if (matrix[row - 1][col - 1].getArmy()->getName() == army->getName())
+        power += calculateStrengthRecursive(row - 1, col - 1, calculatedMat);
+
+    if (matrix[row - 1][col].getArmy()->getName() == army->getName())
+        power += calculateStrengthRecursive(row - 1, col, calculatedMat);
+
+
+    return power;
+
 }

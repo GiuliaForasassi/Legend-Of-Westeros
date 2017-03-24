@@ -9,7 +9,15 @@
 class MagicTroop {
 public:
 
-    virtual float getMagic() = 0;
+    MagicTroop(float attack, float defense) : attack(attack), defense(defense) { }
+
+    virtual float getMagic();
+
+protected:
+    float attack;
+    float defense;
+    float magic;
+
 
 };
 

@@ -5,11 +5,13 @@
 #ifndef LEGENDS_OF_WESTEROS_MAP_H
 #define LEGENDS_OF_WESTEROS_MAP_H
 
+#include <vector>
 
 #include "Territory.h"
 
 typedef double typeElem;
 
+using namespace std;
 
 class Map {
 
@@ -41,6 +43,7 @@ private:
     Territory matrix[4][8];
 
     float calculateStrength(int initialRow, int initialColumn);
+    float calculateStrengthRecursive(int initialRow, int initialColumn, vector<vector<bool>> calculatedMat);
 
 };
 

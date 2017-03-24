@@ -6,6 +6,12 @@
 #include "Army.h"
 
 
+Army::~Army()
+{
+    delete simpleTroop;
+    delete magicTroop;
+}
+
 float Army::getPower() {
     return getSimplePower()+getMagicPower();
 }
@@ -15,6 +21,22 @@ float Army::getSimplePower() {
 
 float Army::getMagicPower() {
     return magicTroop->getMagic() * numMagic;
+}
+
+int Army::getNumSimpleTroops() {
+    return numSimple;
+}
+
+int Army::getNumMagicTroops() {
+    return numMagic;
+}
+
+void Army::setNumSimpleTroops(int numSimTroops) {
+    numSimple = numSimTroops;
+}
+
+void Army::setNumMagTroops(int numMagTroops) {
+    numMagic = numMagTroops;
 }
 
 Strategy Army::randomStrategy() {

@@ -10,13 +10,6 @@
 class Wizard : public MagicTroop {
 public:
     Wizard();
-    float getMagic() override;
-
-private:
-    float attack;
-    float defense;
-    float magic;
-
 };
 
 

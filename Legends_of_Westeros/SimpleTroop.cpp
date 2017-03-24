@@ -3,3 +3,9 @@
 //
 
 #include "SimpleTroop.h"
+
+
+
+float SimpleTroop::getStrenght() {
+    return strenght;
+}
