@@ -8,6 +8,7 @@
 #include <string>
 #include "SimpleTroop.h"
 #include "MagicTroop.h"
+//#include "AbstractArmyFactory.h"
 
 using namespace std;
 
@@ -20,6 +21,7 @@ public:
     virtual ~Army();
 
     virtual string getName() = 0;
+
     virtual float getPower();
     virtual float getSimplePower();
     virtual float getMagicPower();

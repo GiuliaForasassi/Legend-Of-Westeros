@@ -5,13 +5,19 @@
 #ifndef LEGENDS_OF_WESTEROS_CONCRETEARMYFACTORY_H
 #define LEGENDS_OF_WESTEROS_CONCRETEARMYFACTORY_H
 
+#include <string>
+
 #include "AbstractArmyFactory.h"
 #include "Lannister.h"
 
-class ConcreteArmyFactory : public AbstractArmyFactory {
 
+
+class ConcreteArmyFactory : public AbstractArmyFactory {
+public:
     ConcreteArmyFactory(house namehouse) : namehouse(namehouse){}
+    ConcreteArmyFactory(std::string name);
     Army* createArmy(int typeSimple, int typeMagic) override ;
+    Army* createArmy() override ;
 
 private:
     house namehouse;

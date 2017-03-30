@@ -15,6 +15,7 @@ enum class house {Lannister, Stark, Greyjoy, Targaryen, WhiteWalkers, Baratheon}
 class AbstractArmyFactory {
 public:
     virtual Army* createArmy(int typeSimple, int typeMagic) = 0;
+    virtual Army* createArmy() = 0;
 
 };
 

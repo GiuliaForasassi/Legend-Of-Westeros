@@ -21,7 +21,7 @@ using namespace std;
 #include "WhiteWalkers.h"
 #include "Map.h"
 
-ostream& operator<<(ostream &o, Strategy s)
+ostream& operator<<(ostream &o, Strategy s) //traduzione da strategy a stringa per fare cout
 {
     switch(s)
     {
@@ -36,14 +36,20 @@ ostream& operator<<(ostream &o, Strategy s)
     }
 }
 
+/*
+ * TODO: fare la grafica
+ * TODO: gestione automatica degli avversari
+ */
 int main() {
 
     srand(time(NULL)); //da chiamare una volta quando tirerò a caso i numeri con la rand
+                       //serve con la rand, la chiamo una volta sola nel main
 
     //Soldier* s;
     //Targaryen *t=new Targaryen();
     //t->getPower(1,2,3,4,5);
 
+    //assegno una strategy casuale ad ogni casata
     Baratheon::strategy = Army::randomStrategy();
     Greyjoy::strategy = Army::randomStrategy();
     Lannister::strategy = Army::randomStrategy();
@@ -51,15 +57,34 @@ int main() {
     Targaryen::strategy = Army::randomStrategy();
     WhiteWalkers::strategy = Army::randomStrategy();
 
+    //creo la mappa
+    Map m;
 
-    Map *m = new Map();
-    m->writeTerritory(0, 0, Territory(false));
-    m->show();
+    while(true)
+    {
+        m.show();
+        int ir, ic, dr, dc;
+        cout << "Inserire riga invasore" << endl;
+        cin >> ir;
+        cout << "Inserire colonna invasore" << endl;
+        cin >> ic;
+        cout << "Inserire riga difensore" << endl;
+        cin >> dr;
+        cout << "Inserire colonna difensore" << endl;
+        cin >> dc;
+
+        try {
+            m.conquer(ir, ic, dr, dc);
+        }
+        catch(exception &e)
+        {
+            cerr << e.what() << endl;
+        }
 
 
-//    m->conquer();
+    }
 
-    Targaryen *t = new Targaryen(5, 30);
+    /*Targaryen *t = new Targaryen(5, 30);
     float ris = 0;
     ris = t->getPower();
     std::cout << "La potenza dei Targaryen è:" << std::endl;
@@ -111,6 +136,6 @@ int main() {
     cout << a3->getStrategy() << endl;
     cout << a4->getStrategy() << endl;
     cout << a5->getStrategy() << endl;
-    cout << a6->getStrategy() << endl;
+    cout << a6->getStrategy() << endl;*/
 
 }

@@ -42,8 +42,9 @@ private:
     int columns;
     Territory matrix[4][8];
 
-    float calculateStrength(int initialRow, int initialColumn);
-    float calculateStrengthRecursive(int initialRow, int initialColumn, vector<vector<bool>> calculatedMat);
+    float calculateStrength(int initialRow, int initialColumn, bool isInvader);
+    float calculateStrengthRecursive(int initialRow, int initialColumn, bool isInvader, vector<vector<bool>> &calculatedMat);
+    int controlledCall(int row, int col, bool isInvader, string armyName, vector<vector<bool>> &calculatedMat);
 
 };
 
