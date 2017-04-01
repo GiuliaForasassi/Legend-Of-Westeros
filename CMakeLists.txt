@@ -3,7 +3,7 @@ project(Legends_of_Westeros)
 
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11")
 
-#add_subdirectory(test)
+add_subdirectory(test)
 
 set(SOURCE_FILES main.cpp Map.cpp Map.h Army.cpp Army.h Targaryen.cpp Targaryen.h
         SimpleTroop.cpp SimpleTroop.h Soldier.cpp Soldier.h MagicTroop.cpp MagicTroop.h Dragon.cpp Dragon.h
