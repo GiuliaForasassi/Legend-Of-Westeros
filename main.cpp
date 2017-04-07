@@ -74,7 +74,10 @@ int main() {
         cin >> dc;
 
         try {
-            m.conquer(ir, ic, dr, dc);
+            bool controllo = m.conquer(ir, ic, dr, dc);
+            if(!controllo){
+                cout << "non sono state fatte modifiche" << endl;
+            }
         }
         catch(exception &e)
         {

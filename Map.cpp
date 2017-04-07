@@ -143,11 +143,14 @@ bool Map::conquer(int invaderRow, int invaderColumn, int defenderRow, int defend
     int numMagTroops;
     if (result < invaderStrength) {
         //vince invader
+        cout << "ha vinto l'invasore: " << matrix[invaderRow][invaderColumn].getArmy()->getName() << endl;
         numSimTroops = defender->getNumSimpleTroops() * 70 / 100;
         numMagTroops = defender->getNumMagicTroops() * 70 / 100;
 
         if ((numMagTroops + numSimTroops) <= 2) {
             //è sconfitto, si riassegna il territorio
+            cout << "lìinvasore che ha conquistato il territorio è: " << matrix[invaderRow][invaderColumn].getArmy()->getName() << endl;
+
             ConcreteArmyFactory f(invader->getName());
             matrix[defenderRow][defenderColumn] = Territory(f.createArmy());
         }
@@ -160,11 +163,13 @@ bool Map::conquer(int invaderRow, int invaderColumn, int defenderRow, int defend
     }
     else {
         //vince defender
+        cout << "ha vinto il difensore: " << matrix[defenderRow][defenderColumn].getArmy()->getName() << endl;
         numSimTroops = invader->getNumSimpleTroops() * 70 / 100;
         numMagTroops = invader->getNumMagicTroops() * 70 / 100;
 
         if ((numMagTroops + numSimTroops) <= 2) {
             //è sconfitto, si riassegna il territorio
+            cout << "il difensore che ha conquistato il territorio è: " << matrix[defenderRow][defenderColumn].getArmy()->getName() << endl;
             ConcreteArmyFactory f(defender->getName());
             matrix[invaderRow][invaderColumn] = Territory(f.createArmy());
         }
@@ -176,6 +181,9 @@ bool Map::conquer(int invaderRow, int invaderColumn, int defenderRow, int defend
         }
 
     }
+
+    cout << "truppe semplici modificate perdente:" << numSimTroops << endl;
+    cout << "truppe magiche modificate perdente:" << numMagTroops << endl;
 
     return true;
 }
