@@ -53,7 +53,6 @@ Map::Map() : rows(4), columns(8) {
                     matrix[i][j] = Territory(new Targaryen());
                     break;
             }
-
         }
     }
 }
@@ -65,7 +64,6 @@ Territory Map::readTerritory(int r, int c) {
     else
         throw "Indici errati.";
     //}catch
-
 }
 
 void Map::writeTerritory(int r, int c, Territory val) {
@@ -75,7 +73,6 @@ void Map::writeTerritory(int r, int c, Territory val) {
     else
         throw "Indici errati.";
     //}
-
 }
 
 void Map::show() {
@@ -102,14 +99,12 @@ void Map::show() {
                 s2 += "|xxx";
                 s3 += "|xxx";
             }
-
         }
         //stampo riga i
         cout << s0 << "-" << endl << s1 << "|" << endl << s2 << "|"  << endl << s3 << "|"  << endl;
     }
     //stampo separatore per chiudere la matrice
     cout << s0 << "-" << endl;
-
 }
 
 //ritorna true se il combattimento è stato effettuato
