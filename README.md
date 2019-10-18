@@ -1,2 +1,2 @@
 # Legend-Of-Westeros
-Progetto in C++ realizzato in collaborazione con *Alice Casali*
+C++ project realized in collaboration with *Alice Casali*
